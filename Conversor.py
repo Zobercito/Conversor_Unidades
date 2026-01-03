@@ -10,7 +10,7 @@ opcion = input("Elige una opción (1 o 2): ")
 FACTOR_CONVERSION = 0.621371
 
 if opcion == "1":
-    km = float(input("Ingresa la cantidad en Kilómetros: "))
+    km = float(input("Ingresa la cantidad en Kilometros: "))
     millas = km * FACTOR_CONVERSION
     print(f"{km} Km equivalen a {millas:.2f} millas")
 
