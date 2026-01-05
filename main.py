@@ -1,5 +1,5 @@
 import os
-from units import convertir_distancia  # Solo necesitamos esta función
+from units import convertir_distancia
 
 def leer_flotante(prompt: str) -> float:
     """Solicita y valida entrada de número flotante."""
