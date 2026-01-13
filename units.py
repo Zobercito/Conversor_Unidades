@@ -23,3 +23,32 @@ def convertir_distancia(valor: float, unidad_origen: str, unidad_destino: str) -
     # Convertir a metros primero, luego a la unidad destino
     valor_en_metros = valor * FACTORES[unidad_origen]
     return valor_en_metros / FACTORES[unidad_destino]
+
+
+def convertir_temperatura(valor: float, unidad_origen: str, unidad_destino: str) -> float:
+    """Convierte entre Celsius (C), Fahrenheit (F) y Kelvin (K).
+
+    La conversión se realiza normalizando primero a Celsius y luego a la unidad destino.
+    """
+    origen = unidad_origen.upper()
+    destino = unidad_destino.upper()
+
+    # Convertir origen -> Celsius
+    if origen == "C":
+        c = valor
+    elif origen == "F":
+        c = (valor - 32) * 5.0 / 9.0
+    elif origen == "K":
+        c = valor - 273.15
+    else:
+        raise ValueError("Unidad de temperatura no soportada. Use: C, F, K")
+
+    # Convertir Celsius -> destino
+    if destino == "C":
+        return c
+    if destino == "F":
+        return c * 9.0 / 5.0 + 32
+    if destino == "K":
+        return c + 273.15
+
+    raise ValueError("Unidad de temperatura no soportada. Use: C, F, K")
