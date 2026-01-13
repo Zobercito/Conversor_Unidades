@@ -81,7 +81,6 @@ def menu_distancia():
             if key != op_origen and key != "0":  # No mostrar la misma unidad ni volver
                 print(f"{key}. {nombre} ({abrev})")
         
-        op_destino = input("\nOpción: ").strip()
         try:
             op_destino = input("\nOpción: ").strip()
         except EOFError:
