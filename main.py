@@ -128,4 +128,7 @@ def main():
             pause_and_clear()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\nPrograma interrumpido. Saliendo...")
