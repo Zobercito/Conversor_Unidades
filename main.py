@@ -1,25 +1,6 @@
 import os
-from units import convertir_distancia
-
-def leer_flotante(prompt: str) -> float:
-    """Solicita y valida entrada de número flotante."""
-    while True:
-        try:
-            return float(input(prompt).strip())
-        except ValueError:
-            print("Entrada inválida. Ingresa un número válido.")
-        except EOFError:
-            print("\nEntrada terminada por EOF. Saliendo...")
-            raise SystemExit
-
-def pause_and_clear():
-    """Pausa la ejecución y limpia la pantalla."""
-    try:
-        input("\nPresione Enter para continuar...")
-    except EOFError:
-        print("\nEntrada terminada por EOF. Saliendo...")
-        raise SystemExit
-    os.system("cls" if os.name == "nt" else "clear")
+from units import convertir_distancia, convertir_temperatura, DISTANCE_UNITS, TEMP_UNITS
+from ui import leer_flotante, pause_and_clear
 
 def menu_principal():
     """Muestra el menú principal del conversor."""
@@ -35,18 +16,7 @@ def menu_principal():
 
 def menu_distancia():
     """Muestra el menú específico para conversiones de distancia."""
-    unidades = {
-        "1": ("Kilómetros", "km"),
-        "2": ("Metros", "m"),
-        "3": ("Centímetros", "cm"),
-        "4": ("Milímetros", "mm"),
-        "5": ("Millas", "mi"),
-        "6": ("Yardas", "yd"),
-        "7": ("Pies", "ft"),
-        "8": ("Pulgadas", "in"),
-        "9": ("Millas náuticas", "nm"),
-        "0": ("Volver al menú principal", None)
-    }
+    unidades = DISTANCE_UNITS
     
     while True:
         print("\n" + "-"*40)
@@ -125,14 +95,7 @@ def menu_distancia():
 
 def menu_temperatura():
     """Muestra el submenú para conversiones de temperatura."""
-    unidades = {
-        "1": ("Celsius", "C"),
-        "2": ("Fahrenheit", "F"),
-        "3": ("Kelvin", "K"),
-        "0": ("Volver al menú principal", None),
-    }
-
-    from units import convertir_temperatura
+    unidades = TEMP_UNITS
 
     while True:
         print("\n" + "-"*40)

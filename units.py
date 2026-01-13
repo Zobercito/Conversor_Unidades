@@ -1,6 +1,27 @@
 # units.py
 # Lógica de conversión
 
+# Tablas de unidades usadas por la interfaz
+DISTANCE_UNITS = {
+    "1": ("Kilómetros", "km"),
+    "2": ("Metros", "m"),
+    "3": ("Centímetros", "cm"),
+    "4": ("Milímetros", "mm"),
+    "5": ("Millas", "mi"),
+    "6": ("Yardas", "yd"),
+    "7": ("Pies", "ft"),
+    "8": ("Pulgadas", "in"),
+    "9": ("Millas náuticas", "nm"),
+    "0": ("Volver al menú principal", None)
+}
+
+TEMP_UNITS = {
+    "1": ("Celsius", "C"),
+    "2": ("Fahrenheit", "F"),
+    "3": ("Kelvin", "K"),
+    "0": ("Volver al menú principal", None),
+}
+
 # Factores de conversión a metros (unidad base)
 FACTORES = {
     "km": 1000,        # Kilómetros a metros
