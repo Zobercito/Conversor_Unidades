@@ -8,10 +8,17 @@ def leer_flotante(prompt: str) -> float:
             return float(input(prompt).strip())
         except ValueError:
             print("Entrada inválida. Ingresa un número válido.")
+        except EOFError:
+            print("\nEntrada terminada por EOF. Saliendo...")
+            raise SystemExit
 
 def pause_and_clear():
     """Pausa la ejecución y limpia la pantalla."""
-    input("\nPresione Enter para continuar...")
+    try:
+        input("\nPresione Enter para continuar...")
+    except EOFError:
+        print("\nEntrada terminada por EOF. Saliendo...")
+        raise SystemExit
     os.system("cls" if os.name == "nt" else "clear")
 
 def menu_principal():
@@ -54,7 +61,11 @@ def menu_distancia():
         print("0. Volver al menú principal")
         
         # Selección de unidad de origen
-        op_origen = input("\nOpción: ").strip()
+        try:
+            op_origen = input("\nOpción: ").strip()
+        except EOFError:
+            print("\nEntrada terminada por EOF. Saliendo...")
+            return
         if op_origen == "0":
             return
         
@@ -71,6 +82,11 @@ def menu_distancia():
                 print(f"{key}. {nombre} ({abrev})")
         
         op_destino = input("\nOpción: ").strip()
+        try:
+            op_destino = input("\nOpción: ").strip()
+        except EOFError:
+            print("\nEntrada terminada por EOF. Saliendo...")
+            return
         if op_destino not in unidades or op_destino == "0" or op_destino == op_origen:
             if op_destino == op_origen:
                 print("¡Debes seleccionar unidades diferentes!")
@@ -97,7 +113,11 @@ def menu_distancia():
         print("="*40)
         
         # Preguntar si quiere hacer otra conversión
-        otra = input("\n¿Deseas hacer otra conversión de distancia? (s/n): ").strip().lower()
+        try:
+            otra = input("\n¿Deseas hacer otra conversión de distancia? (s/n): ").strip().lower()
+        except EOFError:
+            print("\nEntrada terminada por EOF. Saliendo...")
+            break
         if otra != 's':
             break
             
@@ -107,7 +127,11 @@ def main():
     """Función principal del programa."""
     while True:
         menu_principal()
-        opcion = input("\nElige una opción (1-5): ").strip()
+        try:
+            opcion = input("\nElige una opción (1-5): ").strip()
+        except EOFError:
+            print("\nEntrada terminada por EOF. Saliendo...")
+            break
         
         if opcion == "1":
             menu_distancia()
